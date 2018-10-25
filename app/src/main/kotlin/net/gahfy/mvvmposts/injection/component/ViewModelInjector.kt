@@ -19,7 +19,8 @@ interface ViewModelInjector {
     fun inject(postListViewModel: PostListViewModel)
     /**
      * Injects required dependencies into the specified PostViewModel.
-     * @param postViewModel PostViewModel in which to inject the dependencies
+     * @par
+     * am postViewModel PostViewModel in which to inject the dependencies
      */
     fun inject(postViewModel: PostViewModel)
 

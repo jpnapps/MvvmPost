@@ -22,6 +22,7 @@ android {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas".toString())
             }
+            generateStubs = true
         }
 
     }
@@ -36,6 +37,7 @@ android {
         test.java.srcDirs = ['src/test/kotlin']
         androidTest.java.srcDirs = ['src/androidTest/kotlin']
     }
+
 }
 
 dependencies {
@@ -69,6 +71,7 @@ dependencies {
 
     // Dagger 2
     implementation "com.google.dagger:dagger:$dagger2_version"
+
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
     compileOnly "org.glassfish:javax.annotation:3.1.1"
 
