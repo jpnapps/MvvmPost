@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import io.reactivex.schedulers.Schedulers
+import net.gahfy.mvvmposts.network.PhotoApi
 import net.gahfy.mvvmposts.network.PostApi
 import net.gahfy.mvvmposts.utils.BASE_URL
 import retrofit2.Retrofit
@@ -29,6 +30,17 @@ object NetworkModule {
         return retrofit.create(PostApi::class.java)
     }
 
+    /**
+     * Provides the PhotoApi service implementation.
+     * @param retrofit the Retrofit object used to instantiate the service
+     * @return the Post service implementation.
+     */
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun providePhotoApi(retrofit: Retrofit): PhotoApi {
+        return retrofit.create(PhotoApi::class.java)
+    }
     /**
      * Provides the Retrofit object.
      * @return the Retrofit object
