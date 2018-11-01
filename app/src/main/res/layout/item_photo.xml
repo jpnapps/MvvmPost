@@ -5,33 +5,122 @@
 	<data>
 		<variable
 			name="viewModel"
-			type="net.gahfy.mvvmposts.ui.post.PostViewModel" />
+			type="net.gahfy.mvvmposts.ui.post.PhotoViewModel" />
 	</data>
 
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:paddingLeft="16dp"
-		android:paddingRight="16dp">
-
+		android:paddingLeft="2dp"
+		android:paddingRight="2dp">
+		<android.support.constraint.Guideline
+			android:id="@+id/guideline_image_left"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.05"
+		/>
+		<android.support.constraint.Guideline
+			android:id="@+id/guideline_image_right"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.35"
+			/>
+		<android.support.constraint.Guideline
+			android:id="@+id/guideline_image_top"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.05"
+			/>
+		<android.support.constraint.Guideline
+			android:id="@+id/guideline_image_bottom"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.35"
+			/>
+		<android.support.constraint.Guideline
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/guideline_title_left"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.25"/>
+		<android.support.constraint.Guideline
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/guideline_title_right"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.75"/>
 		<TextView
 			android:id="@+id/post_title"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:textStyle="bold"
-			app:mutableText="@{viewModel.getPostTitle()}"
+			app:mutableText="@{viewModel.getPhotoTitle()}"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
-		<TextView
+	<!--	<TextView
 			android:id="@+id/post_body"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
-			app:mutableText="@{viewModel.getPostBody()}"
+			app:mutableText="@{viewModel.getPhotoUrl()}"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/post_title" />-->
+		<ImageView
+			android:id="@+id/post_img"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginTop="10dp"
+			app:layout_constraintCircleAngle="30"
+			app:layout_constraintCircleRadius="30dp"
+			android:src="@drawable/placeholder_image"
+			app:layout_constraintDimensionRatio="H,1:1"
+			app:imageUrl="@{viewModel.getPhotoThumbnailUrl()}"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/post_title" />
+
+		<android.support.v7.widget.CardView
+			app:layout_constraintTop_toBottomOf="@+id/guideline_image_top"
+			app:layout_constraintLeft_toRightOf="@id/guideline_image_left"
+			app:layout_constraintRight_toLeftOf="@+id/guideline_image_right"
+			app:layout_constraintBottom_toTopOf="@+id/guideline_image_bottom"
+
+			android:layout_marginTop="10dp"
+			android:layout_width="0dp"
+			app:cardCornerRadius="10dp"
+			app:cardBackgroundColor="#ffffff"
+			app:cardElevation="10dp"
+			app:cardMaxElevation="10dp"
+			android:layout_height="0dp">
+			<android.support.constraint.ConstraintLayout
+				android:layout_width="match_parent"
+				android:padding="10dp"
+				android:layout_height="match_parent"
+		>
+		<ImageView
+			android:id="@+id/post_thumbnail"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:padding="0dp"
+
+			android:src="@drawable/placeholder_image"
+			app:layout_constraintDimensionRatio="H,1:3"
+			app:imageUrl="@{viewModel.getPhotoThumbnailUrl()}"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+	/>
+			</android.support.constraint.ConstraintLayout>
+
+		</android.support.v7.widget.CardView>
+
+<!--		android:src="@drawable/placeholder_image"-->
+
 	</android.support.constraint.ConstraintLayout>
 </layout>

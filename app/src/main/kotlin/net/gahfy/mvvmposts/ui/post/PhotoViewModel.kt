@@ -12,6 +12,7 @@ class PhotoViewModel: BaseViewModel() {
     fun bind(photo: Photo){
         photoTitle.value = photo.title
         photoUrl.value = photo.url
+        photothumbnailUrl.value = photo.thumbnailUrl
     }
 
     fun getPhotoTitle(): MutableLiveData<String> {
